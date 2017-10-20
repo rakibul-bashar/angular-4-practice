@@ -1,0 +1,60 @@
+<h1>{{name}}</h1>
+<ul>
+    <li>{{age}}</li>
+    <li>{{email}}</li>
+    <li>{{address.street}} {{address.village}} </li>
+
+</ul>
+<button (click)="onClick()">click me</button>
+<button (click)="edituser()">Edit user</button>
+
+<h1>Edit user</h1>
+<div *ngIf=isedit>
+    <form >
+        <div >
+            <label for="name">Name:</label><br>
+            <input type="text" [(ngModel)]="name" name="name" >
+
+        </div>
+        <div >
+            <label for="age">Age:</label><br>
+            <input type="text"  [(ngModel)]="age" name="age">
+
+        </div>
+        <div >
+            <label for="email">Email:</label><br>
+            <input type="text"  [(ngModel)]="email" name="email">
+
+        </div>
+        <div >
+            <label for="street">Street:</label><br>
+            <input type="text"  [(ngModel)]="address.street" name="street">
+
+        </div>
+        <div >
+            <label for="village">Village</label><br>
+            <input type="text"  [(ngModel)]="address.village" name="village">
+
+        </div>
+
+    </form>
+</div>
+<h1>Hobbies</h1>
+<form (submit)="addhobby(hobby.value)">
+    <div >
+        <label for="hobby">Hobby</label>
+        <input type="text" #hobby>
+
+    </div>
+
+</form>
+<ul>
+    <li *ngFor="let hobby of hobbies; let i=index">
+        {{i+1}}:{{hobby}} <button (click)="deletehobby(hobby)"> X </button></li>
+</ul>
+
+<h1>Posts</h1>
+<div *ngFor='let post of posts'>
+    <h1 >{{post.title}}    </h1>
+    <p>{{post.body}}</p>
+</div>
